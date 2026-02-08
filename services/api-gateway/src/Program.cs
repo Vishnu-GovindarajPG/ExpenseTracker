@@ -1,12 +1,10 @@
-using ExpenseTracker.ApiGateway;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
-app.MapGet("/", () => Results.Ok(new ApiStatus(
+app.MapGet("/", () => Results.Ok(new ExpenseTracker.ApiGateway.ApiStatus(
     "ExpenseTracker API Gateway",
     "Healthy",
     DateTimeOffset.UtcNow)))
@@ -15,9 +13,4 @@ app.MapGet("/", () => Results.Ok(new ApiStatus(
 app.MapHealthChecks("/health");
 
 app.Run();
-
-namespace ExpenseTracker.ApiGateway;
-
-public record ApiStatus(string Service, string Status, DateTimeOffset Timestamp);
-
 public partial class Program { }

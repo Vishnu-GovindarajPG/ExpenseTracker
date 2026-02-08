@@ -4,6 +4,7 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
     "plugin:react-hooks/recommended"
   ],
   ignorePatterns: ["dist", ".eslintrc.cjs"],
@@ -14,9 +15,15 @@ module.exports = {
     tsconfigRootDir: __dirname
   },
   parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint", "react-refresh", "vitest"],
+  plugins: ["@typescript-eslint", "react", "react-refresh", "vitest"],
   rules: {
+    "react/react-in-jsx-scope": "off",
     "react-refresh/only-export-components": ["warn", { allowConstantExport: true }]
+  },
+  settings: {
+    react: {
+      version: "detect"
+    }
   },
   overrides: [
     {
