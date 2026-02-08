@@ -39,9 +39,9 @@ jobs:
         with:
           dotnet-version: "8.0.x"
       - name: Restore
-        run: dotnet restore
+        run: dotnet restore src/ExpenseTracker.ApiGateway.csproj
       - name: Build
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build src/ExpenseTracker.ApiGateway.csproj --configuration Release --no-restore
       - name: Test
         run: dotnet test tests/ExpenseTracker.ApiGateway.Tests.csproj --configuration Release --no-build
 

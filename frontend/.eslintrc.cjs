@@ -14,8 +14,14 @@ module.exports = {
     tsconfigRootDir: __dirname
   },
   parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint", "react-refresh"],
+  plugins: ["@typescript-eslint", "react-refresh", "vitest"],
   rules: {
     "react-refresh/only-export-components": ["warn", { allowConstantExport: true }]
-  }
+  },
+  overrides: [
+    {
+      files: ["**/*.test.ts", "**/*.test.tsx"],
+      env: { "vitest/globals": true }
+    }
+  ]
 };
