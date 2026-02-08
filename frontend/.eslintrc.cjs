@@ -28,7 +28,7 @@ module.exports = {
   overrides: [
     {
       files: ["**/*.test.ts", "**/*.test.tsx"],
-      env: { "vitest/globals": true }
+      extends: ["plugin:vitest/recommended"]
     }
   ]
 };
