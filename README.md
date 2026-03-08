@@ -83,6 +83,17 @@ Analytics app (`expense-tracker-analytics`):
 - `SUPABASE_URL`
 - `SUPABASE_SERVICE_ROLE_KEY`
 
+### `FRONTEND_ORIGIN` setup on Fly
+
+Because the API gateway CORS policy allows only `FRONTEND_ORIGIN`, deploy frontend once to get its Fly URL, then set the API secret and redeploy API:
+
+```bash
+cd frontend && fly deploy
+# Use the resulting URL, for example: https://expense-tracker-frontend.fly.dev
+fly secrets set FRONTEND_ORIGIN="https://expense-tracker-frontend.fly.dev" -a expense-tracker-api-gateway
+cd ../services/api-gateway && fly deploy
+```
+
 ## Quality gates
 
 The CI pipeline runs on every push/pull request to `main` and fails the build if:
