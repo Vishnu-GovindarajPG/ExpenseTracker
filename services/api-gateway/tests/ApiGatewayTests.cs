@@ -17,7 +17,7 @@ public sealed class ApiGatewayTests : IClassFixture<WebApplicationFactory<Progra
     [Fact]
     public async Task GetRoot_ReturnsStatusPayload()
     {
-        var response = await _client.GetAsync("/");
+        var response = await _client.GetAsync("/api/status");
 
         response.EnsureSuccessStatusCode();
 
